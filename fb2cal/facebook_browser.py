@@ -9,7 +9,9 @@ class FacebookBrowser:
     def __init__(self):
         """ Initialize browser as needed """
         self.logger = Logger('fb2cal').getLogger()
-        self.browser = mechanicalsoup.StatefulBrowser()
+        self.browser = mechanicalsoup.StatefulBrowser(
+            soup_config={'features': 'html.parser'}
+            )
         self.browser.set_user_agent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36')
         self.__cached_token = None
         self.__cached_locale = None
